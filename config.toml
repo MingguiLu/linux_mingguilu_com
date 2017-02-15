@@ -1,4 +1,4 @@
-baseurl = "https://linux.mingguilu.com"
+baseurl = "http://linux.mingguilu.com/"
 languageCode = "zh-cn"
 title = "Linux"
 # Enable comments by entering your Disqus shortname
