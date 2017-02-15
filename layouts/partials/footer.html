@@ -1,0 +1,9 @@
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <p class="back_top"><a href="javascript:scroll(0,0)" target="_self"> <span class="icon icon-rocket"></span>回到顶部<span class="icon icon-rocket"></span> </a></p>
+	    &copy; {{.Now.Format "2006"}} <i class="fa fa-github"></i> <a href="https://github.com/mingguilu">MingguiLu</a>. <br>
+      {{ with .Site.Params.copyright }}{{ . | markdownify}}{{ end }}
+    </div>
+  </div>
+</footer>
