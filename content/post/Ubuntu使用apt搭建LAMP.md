@@ -4,8 +4,8 @@ categories = ["ubuntu"]
 date = "2017-02-16T09:52:59+08:00"
 images = []
 menu = ""
-tags = ["ubuntu16.04","LAMP","Apache","MariaDB","PHP"]
-title = "Ubuntu搭建LAMP-基于Apt包管理器"
+tags = ["ubuntu16.04","LAMP","Apache","MariaDB","PHP","phpMyAdmin"]
+title = "Ubuntu使用apt搭建LAMP"
 
 +++
 
