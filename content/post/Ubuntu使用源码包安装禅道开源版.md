@@ -5,7 +5,7 @@ date = "2017-02-17T22:48:12+08:00"
 images = []
 menu = ""
 tags = ["Ubuntu16.04","禅道","ZenTao"]
-title = "Ubuntu安装开源版禅道"
+title = "Ubuntu使用源码包安装禅道开源版"
 
 +++
 
@@ -29,7 +29,7 @@ title = "Ubuntu安装开源版禅道"
 #### 将解压后的源码目录拷贝到apache网站根目录
 
 	sudo cp -rvf zentaopms/ /var/www/html/
-	
+
 	$ ls /var/www/html/zentaopms/
 	bin  config  db  doc  framework  lib  module  tmp  VERSION  www
 
@@ -51,7 +51,7 @@ title = "Ubuntu安装开源版禅道"
 
 	chmod o=rwx -R /var/www/html/zentaopms/tmp/
 
-	chmod o=rwx -R /var/www/html/zentaopms/www/data 
+	chmod o=rwx -R /var/www/html/zentaopms/www/data
 
 #### 刷新系统检查，全部通过
 ![](/images/170217_01_03_04.png)
@@ -66,9 +66,9 @@ title = "Ubuntu安装开源版禅道"
 
 根据提示拷贝文本框中的配置内容，保存到" /var/www/html/zentaopms/config/my.php "中
 
-	$ sudo vim /var/www/html/zentaopms/config/my.php 
-	
-	$ cat /var/www/html/zentaopms/config/my.php 
+	$ sudo vim /var/www/html/zentaopms/config/my.php
+
+	$ cat /var/www/html/zentaopms/config/my.php
 	<?php
 	$config->installed       = true;
 	$config->debug           = false;
@@ -96,8 +96,8 @@ title = "Ubuntu安装开源版禅道"
 
 	$ pwd
 	/var/www/html/zentaopms/www/
-	
-	$ sudo rm -rvf install.php upgrade.php 
+
+	$ sudo rm -rvf install.php upgrade.php
 	已删除'install.php'
 	已删除'upgrade.php'
 
@@ -141,7 +141,7 @@ title = "Ubuntu安装开源版禅道"
 	<br />
 	MariaDB [mysql]> update user set host = '%' where user = 'root' and host = 'localhost';  
 	＃更改“mysql”数据库里的“user”表里的“host”项，从“localhost”改为“%”
-　	
+　
 	Query OK, 1 row affected (0.00 sec)  
 	Rows matched: 1  Changed: 1  Warnings: 0  
 	<br />
@@ -173,5 +173,3 @@ title = "Ubuntu安装开源版禅道"
 *参考文档*
 
 * [使用源码包安装(各系统通用)禅道](http://www.zentao.net/book/zentaopmshelp/101.html)
-
-
