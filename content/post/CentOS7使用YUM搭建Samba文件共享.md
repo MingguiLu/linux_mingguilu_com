@@ -84,7 +84,7 @@ CentOS7防火墙与SELinux默认是开启状态，并拒绝远程用户对Samba�
 
 ### 4. 创建共享目录
 
-假设目前有设计、开发和运维三个部门，各自创建一个部门共享目录供部门内部共享文件，和一个公共共享目录供部门间互相共享文件：
+假设目前有设计、开发、运维三个部门，各自创建一个部门共享目录供部门内部共享文件，和一个公共共享目录供部门间互相共享文件：
 
 	# mkdir -p /share/{design,develop,ops,share/{desing,develop,ops}}
 
@@ -135,40 +135,41 @@ Samba默认配置文件：/etc/samba/smb.conf
 
 配置解析：
 
-[global]  																	 # 定义全局策略
-        workgroup = SAMBA										 # 定义工作组
-        security = user											 
-				interfaces = lo 192.168.80.101/24		 # 指定samba监听哪些网络端口
-				hosts allow = 127. 192.168.80. EXCEPT 192.168.80.250  # 指定有权访问Samba服务器资源的主机，与之相反的是hosts deny，使用EXCEPT可以指定例外的IP地址
-				log_file = /var/log/samba/log.%m     # 指定日志文件，每个访问主机会独立产生日志
-				max log size = 50										 # 定义单个日志文件最大容量为50kb
+	[global]  															# 定义全局策略
+		workgroup = SAMBA											# 定义工作组
+		security = user											 
+		interfaces = lo 192.168.80.101/24								# 指定samba监听哪些网络端口
+		hosts allow = 127. 192.168.80. EXCEPT 192.168.80.250  			# 指定有权访问Samba服务器资源的主机，与之相反的是hosts deny，使用EXCEPT可以指定例外的IP地址
+		log_file = /var/log/samba/log.%m    							# 指定日志文件，每个访问主机会独立产生日志
+		max log size = 50											        # 定义单个日志文件最大容量为50kb
 
-        passdb backend = tdbsam							 # 定义客户端访问Samba的方式
-				# user表示使用用户名和密码验证身份
-				# share表示匿名访问
-				# server表示验证身份的访问，但账户信息保存在另一台smb服务器上
-				# domain也表示验证身份的访问，但账户信息保存在活动目录中
-				guest account = nobody              # 设置匿名账户为nobody
+		passdb backend = tdbsam							 			# 定义客户端访问Samba的方式
+		# user表示使用用户名和密码验证身份
+		# share表示匿名访问
+		# server表示验证身份的访问，但账户信息保存在另一台smb服务器上
+		# domain也表示验证身份的访问，但账户信息保存在活动目录中
+		guest account = nobody              								# 设置匿名账户为nobody
 
-				deadtime = 10                       # 连接回话自动关闭的期限，在大量并发访问环境中可提高服务器性能
-				max connections = 0                 # 设置最大连接数，0表示无限制
+		deadtime = 10                     										# 连接回话自动关闭的期限，在大量并发访问环境中可提高服务器性能
+		max connections = 0                 									# 设置最大连接数，0表示无限制
 
-        printing = cups											# ？？？
-        printcap name = cups                # ？？？
-        load printers = yes									# 是否共享打印机
-        cups options = raw									# 打印属性
+		printing = cups													# ？？？
+		printcap name = cups               									# ？？？
+		load printers = yes												# 是否共享打印机
+		cups options = raw												# 打印属性
 
-[share]																			# 共享名称
-        comment = Home Directories          # 共享描述信息
-				path = /share                       # 共享路径
-        valid users = design1 @develop 			# 有效账户列表
-        browseable = No						          # 共享目录是否对所有人可见（yes|no）
-				read only = No											# 只读权限（yes|no）
-				writeable = no											# 是否可写（yes|no）
-				write list = design1 @develop 			# 写权限账户或组列表
-				create mask = 0744									# 客户端上传文件的默认权限
-				directory mask = 0755	              # 客户端创建目录的默认权限
-				invalid users = root bin						# 禁止root与bin访问share共享
-        inherit acls = Yes									# 继承访问控制列表（yes|no） ？？？
-				guest ok = no     									# 是否允许匿名访问，仅当全局设置security=share时有效（yes|no）
-				？？？																# 是否启用共享
+	[share]																# 共享名称
+			comment = Home Directories          							# 共享描述信息
+			path = /share                      									# 共享路径
+			browseable = no						          				# 是否对所有人可见（yes|no）
+			public = no													# 是否被所有人可读(yes|no)
+			read only = No												# 是否只读（yes|no）
+			writeable = no												# 是否可写（yes|no）
+			write list = 	 												# 可写用户或组列表
+			create mask = 0744											# 客户端上传文件的默认权限
+			directory mask = 0755	             								# 客户端创建目录的默认权限
+			valid users =												# 白名单
+			invalid users = 												# 黑名单
+			inherit acls = Yes											# 继承访问控制列表（yes|no）
+			guest ok = no     											# 是否允许匿名访问，仅当全局设置security=share时有效（yes|no）
+			available = yes												# 是否启用该共享(yes|no)
