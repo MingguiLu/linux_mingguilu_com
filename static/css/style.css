@@ -2051,7 +2051,8 @@ div#article-category .fa.fa-terminal {
 }
 
 img {
-    width: 100%;
+    width: auto;
+		max-width: 100%
 }
 
 div.talaria-wrapper a > img {
