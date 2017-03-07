@@ -405,6 +405,26 @@ DO you still want to proceed with this legacy installer?[no]
 
 ![](/images/Ubuntu_2_21_01.png)
 
+#### 2.22 安装[Teamviewer](https://www.teamviewer.com/zhcn/)
+
+![](/images/Ubuntu_2_22_01.png)
+
+下载Ubuntu版[Teamviewer_12.0.71510_i386.deb](https://www.teamviewer.com/zhcn/download/linux/),注意必须下载32位的版本
+
+为64位Ubuntu16.04添加32位架构支持
+
+	sudo dpkg --add-architecture i386
+
+安装Teamviewer的依赖包
+
+	sudo apt-get update
+
+	sudo apt-get install libdbus-1-3:i386 libasound2:i386 libexpat1:i386 libfontconfig1:i386 libfreetype6:i386 libjpeg62:i386 libpng12-0:i386 libsm6:i386 libxdamage1:i386 libxext6:i386 libxfixes3:i386 libxinerama1:i386 libxrandr2:i386 libxrender1:i386 libxtst6:i386 zlib1g:i386 libc6:i386
+
+安装Teamviewer12
+
+	sudo dpkg -i teamviewer_12.0.71510_i386.deb 
+
 ### 3. 常用工具软件安装
 #### 3.1 安装Albert
 
@@ -466,6 +486,16 @@ Notepadqq功能近似于Windows下的Notepad++
 	sh VMware-Workstation-Full-12.5.2-4638234.x86_64.bundle
 
 稍等弹出图形化的安装界面，与windows上安装相似，一路下一步至安装完毕。
+
+#### 3.10　安装[Visual Studio Code](https://code.visualstudio.com/)
+
+![](/images/Ubuntu_3_10_01.png)
+
+下载Ubuntu版的.deb包 ：[code_1.10.1-1488415350_amd64.deb](https://code.visualstudio.com/docs/?dv=linux64_deb)
+
+安装.deb包
+
+	sudo dpkg -i code_1.10.1-1488415350_amd64.deb
 
 ### 4. 使用Samba与Windows共享文件
 
