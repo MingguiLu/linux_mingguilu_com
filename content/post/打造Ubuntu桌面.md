@@ -425,6 +425,20 @@ DO you still want to proceed with this legacy installer?[no]
 
 	sudo dpkg -i teamviewer_12.0.71510_i386.deb 
 
+#### 2.23 安装KDE Connect
+
+KDE Connect用于linux桌面和Android手机之前传输文件 ,虚拟输入等
+
+Android手机上需要安装KDE Connect的APP，桌面端程序安装如下：
+
+    sudo add-apt-repository ppa:varlesh-l/indicator-kdeconnect
+    
+    sudo apt update
+    
+    sudo apt install kdeconnect indicator-kdeconnect
+    
+![](/images/Ubuntu_2_23_01.png)
+
 ### 3. 常用工具软件安装
 #### 3.1 安装Albert
 
