@@ -17,7 +17,7 @@ theme = ""
     # Tell me who you're
     location = ""
     site_description = ""
-    copyright  = "Powered by [Hugo](//gohugo.io). Theme by [hugo-theme-arch](https://github.com/syui/hugo-theme-arch). Hosted by [Github](https://github.com)."
+    copyright  = "Powered by [Hugo](//gohugo.io). Theme by [hugo-theme-arch](https://github.com/syui/hugo-theme-arch). Hosted by [Coding](https://coding.net) Pages and [Github](https://github.com) Pages."
 
     # Format dates with Go's time formating
     date_format = "2006-01-02"
